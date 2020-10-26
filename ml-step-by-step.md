@@ -76,3 +76,7 @@ We can also employ stratefied sampling to respect the underlying distribution.
 ## document similarity
 
 [a good guide on state of the art document similarity algorithms](https://towardsdatascience.com/the-best-document-similarity-algorithm-in-2020-a-beginners-guide-a01b9ef8cf05)
+
+## my full project examples
+
+* [spam text classification exploration for Square Marketing](https://github.com/Sticksword/to-spam-or-not-to-spam/blob/master/README.md)
