@@ -5,6 +5,9 @@
 * [sklearn has a guide on working with text data](https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html)
 * [multithreading support with xgboost and sklearn cross validation](https://machinelearningmastery.com/best-tune-multithreading-support-xgboost-python/)]
 
+* [stanford course on deep learning for nlp](http://web.stanford.edu/class/cs224d/syllabus.html)
+  * [related github repo](https://github.com/kvfrans/cs224-solutions/blob/master/a1/q3_word2vec.py)
+  * [related assignment page](http://cs224d.stanford.edu/assignment1/index.html)
 * [good deep learning course offered by UW-Madison](https://github.com/rasbt/stat453-deep-learning-ss20)
 
 * [dude writes a visual blog about many good ML & DL concepts](http://jalammar.github.io/)
