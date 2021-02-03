@@ -2,11 +2,25 @@
 
 ## initial data explorations
 
-* data profiling using `.shape` and `.describe()` and `.head()`
+* [extensive guide to exploratory data analysis](https://towardsdatascience.com/an-extensive-guide-to-exploratory-data-analysis-ddd99a03199e)
+* data profiling using `.shape` and `.describe()` and `.head()` and `.columns`
+* more data profiling
+  * number of uniq values for each variable: `.nunique(axis=0)`
+  * unique values for a column: `df.some_column.unique()`
+* remove unwanted columns: `df_cleaned = df_cleaned.copy().drop(['url','image_url','city_url'], axis=1)`
 * visualize data with matplotlib
 * standardize/normalize data
+* removing outliers:
+
+  ``` python
+  df_cleaned = df_cleaned[df_cleaned['price'].between(999.99, 99999.00)]
+  df_cleaned = df_cleaned[df_cleaned['year'] > 1990]
+  df_cleaned = df_cleaned[df_cleaned['odometer'] < 899999.00]df_cleaned.describe().apply(lambda s: s.apply(lambda x: format(x, 'f')))
+  ```
+
 * handling null values
-  * Delete rows with missing data
+  * count null for columns: `df.isna().sum()`
+  * Delete rows with missing data: `df_cleaned = df_cleaned.dropna(axis=0)`
   * Mean/Median/Mode imputation
     * use median when there are a number of outliers that positively or negatively skew the data.
   * Assigning a unique value
@@ -17,11 +31,28 @@
   * Second, mean imputation reduces the variance of the data and increases bias in our data. This leads to a less accurate model and a narrower confidence interval due to a smaller variance.
 * removing duplicates
 
+## visualizing the data & looking for relationships
+
+### histograms
+
 ``` python
 import matplotlib.pyplot as plt
 my_data.hist(bins=50, figsize=(20,15))
 plt.show()
 ```
+
+``` python
+df_cleaned['year'].plot(kind='hist', bins=20, figsize=(12, 6), facecolor='grey', edgecolor='black')
+```
+
+### boxplots
+
+``` python
+### all dots outside of boxplot are outliers
+df_cleaned.boxplot('price')
+```
+
+### scatterplots
 
 ``` python
 from pandas.plotting import scatter_matrix
@@ -35,13 +66,18 @@ scatter_matrix(my_data[attributes], figsize=(12, 8))
 my_data.plot(kind="scatter", x="attribute_a", y="attribute_b",
              alpha=0.1)
 plt.axis([0, 16, 0, 550000])
+
+# scatterplots for all your variable pairs
+sns.pairplot(my_data)
 ```
 
-View correlation of variables via `.corr()`
+### View correlation of variables via `.corr()`
 
 ``` python
 corr_matrix = my_data.corr()
 corr_matrix["attribute_a"].sort_values(ascending=False)
+
+sns.heatmap(corr_matrix, xticklabels=corr_matrix.columns, yticklabels=corr_matrix.columns, annot=True, cmap=sns.diverging_palette(220, 20, as_cmap=True))
 ```
 
 ## data considerations

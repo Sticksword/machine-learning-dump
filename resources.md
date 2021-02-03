@@ -9,6 +9,8 @@
 
 * [dude writes a visual blog about many good ML & DL concepts](http://jalammar.github.io/)
 
+* [deep learning a to z]
+
 ## text summarization
 
 * [pointer generator network paper repo](https://github.com/abisee/pointer-generator)
@@ -17,3 +19,5 @@
   * [python notebook](https://github.com/aravindpai/How-to-build-own-text-summarizer-using-deep-learning/blob/master/How_to_build_own_text_summarizer_using_deep_learning.ipynb)
 * [a good dataset to use is the cnn / daily mail dataset](https://machinelearningmastery.com/prepare-news-articles-text-summarization/)
   * [see also by abigail see on downloading and using this dataset](https://github.com/abisee/cnn-dailymail)
+* [word embedding repository](http://vectors.nlpl.eu/repository/)
+* [glove word embedding page/download](https://nlp.stanford.edu/projects/glove/)
