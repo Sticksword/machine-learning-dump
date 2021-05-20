@@ -12,7 +12,9 @@
 
 * [dude writes a visual blog about many good ML & DL concepts](http://jalammar.github.io/)
 
-* [deep learning a to z]
+* [deep learning a to z](https://www.udemy.com/course/deeplearning/)
+
+* [not strictly ML but a great visual tutorial about information theory (and where entropy and cross entropy came from)](http://colah.github.io/posts/2015-09-Visual-Information/)
 
 ## text summarization
 
