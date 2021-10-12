@@ -33,5 +33,10 @@
 
 * tensowflow, pytorch (long lifespan)
 * [trax (builds on either JAX or Tensorflow)(probably long lifespan)](https://github.com/google/trax)
+  * [getting started with google trax for nlp](https://towardsdatascience.com/get-started-with-google-trax-for-nlp-ff8dcd3119cf)
 * huggingface's transformer lib (probably long-ish lifespan)
 * fast.ai libraries (probably shorter lifespan)
+
+## papers
+
+[see this doc for some notes on various papers i've read](papers.md)
