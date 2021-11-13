@@ -36,3 +36,22 @@ wanted to gather and share my thoughts from reading various neural net papers
 * [Image Style Transfer using Convolutional Neural Networks](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)
   * interesting: 8/10
   * intuitive: 7/10
+
+* [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215.pdf)
+  * interesting: 8.5/10 - i love the idea of training two separate neural networks, the encoder and the decoder for tasks like language translation. one of the main ideas is reducing something (like a language) into some fundamental representation (the job of the Encoder) and then to take that fundamental representation and decode it into a different language (the job of the Decoder)
+  * intuitive: 9/10 - if you know RNNs/LSTMs, then this paper should be relatively straightforward
+  * idea here is to train an Encoder to convert a sequence to its meaning/representation (ie. text to the meaning of the text in a vector) and then train a Decoder to convert an initial token plus the meaning of the text to a new sequence (trained obviously to look like the right new sequence).
+  * an example would be language to language translation, where you train the Encoder to understand and capture the meaning in English and you train the Decoder to understand the meaning vector and convert that to a reasonable output sequence in the target language.
+  * in the paper, we stack LSTMs because empirically it was shown that deep networks outperformed shallow networks
+  * for this particular architecture, the number of layers in both the Encoder and Decoder must match in order to properly use all the context vectors - if not, we would need to average the context vectors or something in order to fit X context vectors from the Encoder into Y hidden states for the Decoder.
+* [illustrated seq2sec with attention](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
+* [illustrated transformer with attention](https://jalammar.github.io/illustrated-transformer/)
+* [the annotated transformer: harvard nlp group dissecting the attn is all you need paper](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
+* [actual paper for attn is all you need](https://arxiv.org/pdf/1706.03762.pdf)
+  * interesting: 8.5/10 - learning to focus on the right part of a sentence is game changing, and in theory can be applied to not just transformers but to CNNs, GNNs, and other kinds of neural networks
+  * intuitive: 7.5/10 - dense with lots of formulas, ideally you start with the annotated version of this paper first by the Harvard NLP group
+
+* [Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165.pdf)
+  * interesting: 9.5/10 - it's mind boggling what the paper shows GPT-3 can do
+  * intuitive: 6/10 - the paper is long and dense, if you have previous knowledge of seq2seq models and transformers, great, if not, well this paper might seem outlandish
+  * idea here is that OpenAI trained a huge neural net to basically memorize the relationships between words learned across a huge collection of text scraped from the internet and this neural net model can be used in a variety of natural language processing tasks without much custom training
