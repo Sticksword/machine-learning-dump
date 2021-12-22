@@ -8,3 +8,5 @@ Hello! I'm going to gather/create a bunch of various notebooks to continue build
 * [ml: a step by step guide](ml-step-by-step.md)
 * [resources](resources.md)
   * [datasets](datasets.md)
+* [my graph neural net deep dive](https://github.com/Sticksword/graph-neural-network-recommender-system)
+* [my autodiff deep dive](https://github.com/Sticksword/autodiff-exploration/blob/master/my-learnings.md)
