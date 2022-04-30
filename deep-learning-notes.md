@@ -1,5 +1,17 @@
 # deep-learning-notes
 
+the general idea is that there's backprop to propagate errors from the final output all the way to each individual neuron.
+
+various optimizers use gradient descent to change the weights (backprop simply tells us what the error is for each neuron, the optimizer tells us how to update the neuron given this error)
+
+hyperparameter tuning in this case is about tuning the optimizer which i guess makes up the model? so things like learning rate, batch size, momentum, num of epochs, etc.
+(hyperparameters related to model training)
+
+can also experiment with dropout vs regularization, number of hidden layers and units in the layer, activation functions
+(hyperparameters related to network)
+
+you can also change up the architecture of neural nets which also is what makes up a model
+
 ## architectures
 
 * ConvNets - captures spatial relationships, good to parallelize

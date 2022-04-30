@@ -7,9 +7,15 @@
 * more data profiling
   * number of uniq values for each variable: `.nunique(axis=0)`
   * unique values for a column: `df.some_column.unique()`
+    * remove non-unique columns
 * remove unwanted columns: `df_cleaned = df_cleaned.copy().drop(['url','image_url','city_url'], axis=1)`
 * visualize data with matplotlib
+* for features that are skewed, we can use a logarithmic transformer to make them as normally distributed as possible
 * standardize/normalize data
+  * normalized dataset will have values that range between 0 and 1
+  * standardized dataset will have a mean of 0 and standard deviation of 1, but there is no specific upper or lower bound for the maximum and minimum values.
+  * don't need to normalize for tree based models
+    * main reason for normalization for error based algorithms such as linear, logistic regression, neural networks is faster convergence to the global minimum due to the better initialization of weights. Information based algorithms (Decision Trees, Random Forests) and probability based algorithms (Naive Bayes, Bayesian Networks) don't require normalization
 * removing outliers:
 
   ``` python
@@ -18,17 +24,28 @@
   df_cleaned = df_cleaned[df_cleaned['odometer'] < 899999.00]df_cleaned.describe().apply(lambda s: s.apply(lambda x: format(x, 'f')))
   ```
 
+### data distributions
+
+The features in the dataset should conform to the statistical assumptions of the models.
+ie. Many models implemented in Sklearn might perform poorly if the numeric features do not more or less follow a standard Gaussian (normal) distribution. Except for tree-based models, the objective function of Sklearn algorithms assumes the features follow a normal distribution.
+
+So we should standardize (0 mean and variance of 1) and also log transform skewed features
+
 * handling null values
   * count null for columns: `df.isna().sum()`
   * Delete rows with missing data: `df_cleaned = df_cleaned.dropna(axis=0)`
   * Mean/Median/Mode imputation
     * use median when there are a number of outliers that positively or negatively skew the data.
+    * will decrease variance of the feature
+  * randomly sample as imputation
   * Assigning a unique value
   * Predicting the missing values
   * Using an algorithm which supports missing values, like random forests
   * [good example comparing how you would imput using mean, median, most frequent, and a constant value](https://machinelearningmastery.com/statistical-imputation-for-missing-values-in-machine-learning/)
   * Mean imputation is generally bad practice because it doesn’t take into account feature correlation. For example, imagine we have a table showing age and fitness score and imagine that an eighty-year-old has a missing fitness score. If we took the average fitness score from an age range of 15 to 80, then the eighty-year-old will appear to have a much higher fitness score that he actually should.
   * Second, mean imputation reduces the variance of the data and increases bias in our data. This leads to a less accurate model and a narrower confidence interval due to a smaller variance.
+  * for categorical features, can use most frequent imputation - do not use when a lot of missing values b/c it will distort the relationship of the most frequent categories with dependent variables
+    * we can add another variable to capture that it was missing, but then it's adding more variables
 * removing duplicates
 
 ## visualizing the data & looking for relationships
@@ -102,8 +119,8 @@ We can also employ stratefied sampling to respect the underlying distribution.
 
 #### breakdown
 
-* Logistic Regression: basic linear classifier (good to baseline)
-* Random Forest: ensemble bagging classifier
+* Logistic Regression: basic linear classifier (good to baseline), need linearly separable data, good explainability
+* Random Forest: ensemble bagging classifier, also good explainability
 * K-Nearest Neighbors: instance based classifier
 * Support Vector Machines: maximum margin classifier
 * Gaussian Naive Bayes: probabilistic classifier
