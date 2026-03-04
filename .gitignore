@@ -1,0 +1,5 @@
+recsys/data
+notebooks/data
+housing_example/data
+
+.venv
