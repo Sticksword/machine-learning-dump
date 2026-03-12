@@ -1,0 +1,5 @@
+[project]
+name = "ml-bug-squash"
+version = "0.1.0"
+description = "Interview-style ML bug squash practice exercise"
+requires-python = ">=3.9"
