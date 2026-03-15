@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from bug_squash.metrics import accuracy_score, binary_log_loss
+from bug_squash.pure_python.metrics import accuracy_score, binary_log_loss
 
 
 class MetricsTest(unittest.TestCase):

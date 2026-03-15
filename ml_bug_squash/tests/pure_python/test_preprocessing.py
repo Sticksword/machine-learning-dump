@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from bug_squash.preprocessing import StandardScaler
+from bug_squash.pure_python.preprocessing import StandardScaler
 
 
 class StandardScalerTest(unittest.TestCase):

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from bug_squash.splitting import train_test_split
+from bug_squash.pure_python.splitting import train_test_split
 
 
 class TrainTestSplitTest(unittest.TestCase):

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import unittest
 
-from bug_squash.metrics import accuracy_score
-from bug_squash.model import LogisticRegressionGD
+from bug_squash.pure_python.metrics import accuracy_score
+from bug_squash.pure_python.model import LogisticRegressionGD
 
 
 class LogisticRegressionTest(unittest.TestCase):

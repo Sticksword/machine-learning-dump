@@ -1,43 +1,61 @@
 # ML Bug Squash Practice
 
-This directory contains a small, interview-style ML debugging exercise. The codebase is intentionally tidy and readable, but it contains a few bugs in the library code. The tests are correct and should initially fail.
+This directory contains one interview-style ML debugging repo with two exercises that share a dataset and a package namespace:
 
-## Scenario
+- `bug_squash.pure_python`: a small logistic-regression pipeline written with the standard library
+- `bug_squash.pytorch`: a tabular PyTorch training loop with a small neural network
 
-You have inherited a lightweight churn-prediction training pipeline:
+Both exercises are intentionally tidy and readable. The tests are correct and should initially fail because of bugs in the library code.
 
-- A local CSV dataset is loaded from `data/customer_churn.csv`
-- The data is split into train and test sets
-- Features are standardized
-- A logistic-regression model is trained with gradient descent
-- The pipeline reports test accuracy and log loss
+## Shared scenario
+
+Both versions train a lightweight churn-prediction model from `data/customer_churn.csv`:
+
+- the dataset is loaded from CSV
+- the data is split into train and test sets
+- features are normalized
+- a classifier is trained
+- evaluation reports classification quality on held-out data
 
 Your goal is to use the tests and the codebase to track down the bugs and get the suite passing.
 
-## Running the exercise
+## Running the exercises
 
-From this directory:
+Pure Python tests:
 
 ```bash
-python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests/pure_python -v
 ```
 
-You can also inspect the end-to-end behavior with:
+PyTorch tests:
+
+```bash
+../.venv/bin/python -m unittest discover -s tests/pytorch -v
+```
+
+All tests with the interpreter that has `torch` installed:
+
+```bash
+../.venv/bin/python -m unittest discover -s tests -v
+```
+
+End-to-end scripts:
 
 ```bash
 python3 train_churn_model.py
+../.venv/bin/python train_torch_churn_model.py
 ```
 
 ## What to practice
 
 - Forming a debugging hypothesis before making changes
-- Narrowing the failure from integration tests to specific modules
-- Using the passing tests to understand intended behavior
+- Narrowing failures from integration tests to specific modules
+- Using passing tests to infer intended behavior
 - Fixing the implementation quickly without over-engineering
 
 ## Suggested approach
 
-1. Run the full test suite and group failures by subsystem.
+1. Run the relevant test suite and group failures by subsystem.
 2. Re-run a single failing test while reading the related module.
 3. State what you think the code should do before changing it.
 4. Make the smallest fix that restores the intended behavior.
@@ -45,11 +63,10 @@ python3 train_churn_model.py
 
 ## Project layout
 
-- `bug_squash/datasets.py`: CSV loading
-- `bug_squash/splitting.py`: dataset splitting
-- `bug_squash/preprocessing.py`: feature scaling
-- `bug_squash/model.py`: logistic regression
-- `bug_squash/pipeline.py`: end-to-end training entry point
-- `tests/`: unit and integration tests
+- `bug_squash/pure_python/`: standard-library implementation
+- `bug_squash/pytorch/`: PyTorch implementation
+- `tests/pure_python/`: tests for the pure Python exercise
+- `tests/pytorch/`: tests for the PyTorch exercise
+- `data/`: shared churn dataset
 
-The bugs are all in the library code, not the tests.
+The bugs are in the implementation, not the tests.

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from bug_squash.datasets import load_customer_churn
+from bug_squash.pure_python.datasets import load_customer_churn
 
 
 class LoadCustomerChurnTest(unittest.TestCase):

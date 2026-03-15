@@ -21,7 +21,7 @@ class Dataset:
 
 
 def _default_dataset_path() -> Path:
-    return Path(__file__).resolve().parent.parent / "data" / "customer_churn.csv"
+    return Path(__file__).resolve().parents[2] / "data" / "customer_churn.csv"
 
 
 def load_customer_churn(dataset_path: str | Path | None = None) -> Dataset:
